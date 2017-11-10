@@ -1,0 +1,72 @@
+<div class="" style="padding:0;width:100%;min-height:200px;display:flex;flex-direction:column;">
+
+  <form #taskManageForm="ngForm" class="=" id="task-manage-form" (ngSubmit)="save(taskManageForm)" style="display:flex;flex-direction:column">
+
+    <div style="width:100%;order:1;">
+      <mat-form-field class="" style="width:100%;">
+        <textarea
+          matInput
+          required
+          minlength="2"
+          maxlength="450"
+          placeholder="Task Title"
+          [(ngModel)]="task.title" name="title"
+          id="title"
+          #taskTitle="ngModel" style="">
+        </textarea>
+        <mat-error *ngIf="taskTitle.touched && !taskTitle.valid">
+          <div *ngIf="taskTitle.errors.required">
+            Task title is required
+          </div>
+          <div *ngIf="taskTitle.errors.minlength">
+            Minimum {{taskTitle.errors.minlength.requiredLength}} characters required
+          </div>
+          <div *ngIf="taskTitle.errors.maxlength">
+            Maximum {{taskTitle.errors.maxlength.requiredLength}} characters allowed
+          </div>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div style="order:2;display:flex;">
+      <mat-form-field style="order:1;flex:1">
+        <input type="text" name="taskId" matInput placeholder="Task Id" [(ngModel)]="task.taskId">
+      </mat-form-field>
+
+      <mat-form-field style="order:2;margin-left:5px;flex:1">
+        <input type="text" name="type" matInput [matAutocomplete]="type" placeholder="Task Type" [(ngModel)]="task.type">
+        <mat-autocomplete #type="matAutocomplete">
+          <mat-option *ngFor="let taskType of taskTypes" [value]="taskType">
+            {{ taskType }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field style="order:3;margin-left:5px;flex:1">
+        <input type="text" name="sprint" matInput [matAutocomplete]="sprint" placeholder="Sprint" [(ngModel)]="task.sprint">
+        <mat-autocomplete #sprint="matAutocomplete">
+          <mat-option *ngFor="let taskType of taskTypes" [value]="taskType">
+            {{ taskType }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+    </div>
+
+    <div style="order:3;display:flex;">
+      <mat-form-field style="order:1;">
+        <input type="text" name="estimation" matInput placeholder="Estimated Time in hrs" [(ngModel)]="task.estimation">
+      </mat-form-field>
+    </div>
+
+  </form>
+
+
+
+
+</div>
+
+<div class="" style="display:flex;justify-content:flex-end">
+  <button style="order:1;" form="task-manage-form" mat-raised-button color="primary">Save</button>
+  <button style="order:1;" mat-raised-button (click)="cancel()">Cancel</button>
+</div>

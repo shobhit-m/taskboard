@@ -1,0 +1,12 @@
+<div style="width:200px;">
+
+  <mat-list style="display:flex;flex-direction:column;padding:2%;justify-content:center  ">
+    <mat-list-item *ngFor="let link of links" style="margin:8px 16px">
+      <span matLine style="font-size:20px;cursor:pointer;" md-button (click)="navigateTo(link.path)">
+        <mat-icon [class]="link.icon"></mat-icon>
+        <span style="margin-left: 2%;">{{link.name}}</span>
+      </span>
+    </mat-list-item>
+  </mat-list>
+
+</div>

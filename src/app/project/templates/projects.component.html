@@ -1,0 +1,56 @@
+<div class="project-grid-wrapper container">
+  <mat-grid-list cols="3" rowHeight="120px">
+    <mat-grid-tile
+        *ngFor="let project of projects"
+        [colspan]="1"
+        [rowspan]="1" style="margin-bottom: 20px">
+
+        <mat-card class="project-card">
+          <mat-card-header>
+            <mat-card-title>
+              {{project.name}}
+            </mat-card-title>
+            <div style="flex:1;text-align:right">
+              <span style="color:rgba(93, 93, 93, 0.87);cursor:pointer;" (click)="gotoMembers(project.id)">
+                <mat-icon class="fa fa-users"></mat-icon>
+              </span>
+            </div>
+          </mat-card-header>
+          <mat-card-content>
+            <div>
+              {{project.description}}
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+<div class="project-add-button">
+  <project-add></project-add>
+</div>
+
+
+<!-- <add-project-button></add-project-button> -->
+
+<style>
+.project-card {
+  width: 100%;
+  margin: 0 8px;
+}
+.project-card mat-card-title:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.project-card mat-card-title{
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.project-add-button {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+}
+
+</style>

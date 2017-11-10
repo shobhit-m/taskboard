@@ -1,0 +1,14 @@
+<span class="main-menu" (click)="sidenav.toggle()"><i class="fa fa-lg fa-bars" aria-hidden="true"></i></span>
+<header></header>
+
+<mat-sidenav-container style="" class="sidenav-container">
+  <mat-sidenav #sidenav mode="over" class="sidenav" width="">
+    <side-nav [sidenavObject]="sidenav"></side-nav>
+  </mat-sidenav>
+
+  <content></content>
+  <router-outlet></router-outlet>
+
+</mat-sidenav-container>
+
+<!-- <app-footer></app-footer> -->
